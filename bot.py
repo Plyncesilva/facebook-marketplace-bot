@@ -29,7 +29,8 @@ def get_facebook_marketplace_data(query, debug=False):
     
     # Request parameters
     params = {
-        'maxPrice': '400',
+        'maxPrice': '3500',
+        'minPrice': '1000',
         'daysSinceListed': '30',
         'sortBy': 'creation_time_descend',
         'query': query,
@@ -58,7 +59,7 @@ def get_facebook_marketplace_data(query, debug=False):
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
-        'Cookie': f'datr=dZ0JZ2QPh2NaJL_AkPmULUyd; sb=9Z0JZzeJKS6vKCMGzu-3HhrS; oo=v1; c_user=61551519951356; dpr=1.0909090909090908; xs=44%3Ae2L8PqAvdtnyuQ%3A2%3A1729987598%3A-1%3A-1%3AMNEUiaCZ8F_2-Q%3AAcX7ipadF5KA5k5awzRDf-tZPEi2en9RPuF-F6Az6Wo; b_user=61569826361938; wd=1220x912; fr=0BvFSnh6KN5FtmEQE.AWUjPEvm5_PvNC4X2fRkj9ASr-o.BngpPk..AAA.0.0.BnisQu.AWUd5uHHj1Y; presence={presence_encoded}',
+        'Cookie': f'datr=dZ0JZ2QPh2NaJL_AkPmULUyd; sb=9Z0JZzeJKS6vKCMGzu-3HhrS; oo=v1; c_user=61551519951356; xs=44%3Ae2L8PqAvdtnyuQ%3A2%3A1729987598%3A-1%3A16164%3AMNEUiaCZ8F_2-Q%3AAcVUD2cVroAKbIASYtKWxGcG52tP3lhoTkWvhavnpnw; b_user=61569826361938; fr=0BvFSnh6KN5FtmEQE.AWX9ydE7MGTmzN378XcuUH8YQj0jTNVe63wLfw.BngpPk..AAA.0.0.BnuulR.AWV0JdxtsUA; wd=1920x963; dpr=1.2; presence={presence_encoded}',
         'Upgrade-Insecure-Requests': '1',
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
@@ -256,7 +257,7 @@ def process_listings(driver, listings):
                 text_area.send_keys(Keys.BACK_SPACE)
 
             first_name = listing_data['seller_name'].split(' ')[0]
-            message = f"Hi {first_name}! Is this still available?"
+            message = f"Hi {first_name}! Is this bike still available?"
             text_area.send_keys(message)
             logging.debug(f"Entered message: {message}")
             time.sleep(5)
